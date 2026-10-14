@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <meta name="robots" content="noindex,nofollow">
-<title>小圈子</title>
+<title>小圈子 | Private Circle</title>
 <style>
 :root{
   --bg:#E8ECE7; --surface:#F7F9F6; --ink:#14302D; --ink-soft:#587570; --line:#C3CFC8;
@@ -27,97 +27,93 @@
 html,body{height:100%;margin:0}
 body{
   background:var(--bg);color:var(--ink);
-  font:16px/1.55 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Noto Sans SC",sans-serif;
+  font:16px/1.55 -apple-system,BlinkMacSystemFont,"PingFang SC","Hiragino Sans GB","Microsoft YaHei","Segoe UI",sans-serif;
   -webkit-font-smoothing:antialiased;
 }
 button,input,textarea{font:inherit;color:inherit}
 button{cursor:pointer}
 :focus-visible{outline:3px solid var(--accent);outline-offset:2px}
 
-.btn{border:0;border-radius:6px;padding:10px 18px;font-weight:600;background:var(--accent);color:var(--accent-ink)}
+.btn{border:0;border-radius:6px;padding:9px 16px;font-weight:600;background:var(--accent);color:var(--accent-ink);display:inline-flex;align-items:center;justify-content:center;gap:6px}
 .btn:hover{filter:brightness(1.07)}
 .btn:disabled{opacity:.45;cursor:not-allowed}
 .btn.ghost{background:transparent;border:1.5px solid var(--line);color:var(--ink);font-weight:500}
 .btn.ghost:hover{border-color:var(--accent);color:var(--accent)}
-.btn.small{padding:5px 12px;font-size:14px;border-radius:5px}
-.btn.danger{background:transparent;border:1.5px solid var(--danger);color:var(--danger)}
-.link{background:none;border:0;padding:4px;color:var(--ink-soft);text-decoration:underline;text-underline-offset:3px;font-size:14px}
-.link:hover{color:var(--danger)}
+.btn.small{padding:4px 10px;font-size:13px;border-radius:5px}
+.btn.icon-btn{padding:8px;border-radius:50%;background:transparent;border:1px solid var(--line)}
+.btn.icon-btn:hover{background:color-mix(in srgb,var(--accent) 10%,transparent)}
 
-/* ===== 登录页 / 配置提示 ===== */
 .center{min-height:100dvh;display:grid;place-items:center;padding:20px}
-.card{width:100%;max-width:410px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px 26px;box-shadow:var(--shadow)}
-.logo{display:flex;align-items:center;gap:12px;margin-bottom:4px}
-.logo b{font-size:28px;letter-spacing:.08em;font-weight:800}
-.sub{margin:0 0 20px;color:var(--ink-soft);font-size:15px}
+.card{width:100%;max-width:420px;background:var(--surface);border:1px solid var(--line);border-radius:12px;padding:28px 26px;box-shadow:var(--shadow)}
+.logo{display:flex;align-items:center;justify-content:space-between;margin-bottom:12px}
+.logo-title{display:flex;align-items:center;gap:10px;font-size:24px;font-weight:800}
+.lang-switch{font-size:13px;color:var(--ink-soft);cursor:pointer;background:none;border:1px solid var(--line);border-radius:12px;padding:2px 8px}
+
 .tabs{display:grid;grid-template-columns:1fr 1fr;border:1.5px solid var(--line);border-radius:8px;overflow:hidden;margin-bottom:18px}
 .tabs button{border:0;background:transparent;padding:9px;font-weight:600;color:var(--ink-soft)}
 .tabs button.on{background:var(--accent);color:var(--accent-ink)}
 .field{display:block;margin-bottom:14px}
 .field span{display:block;font-size:14px;color:var(--ink-soft);margin-bottom:4px}
 .field input{width:100%;padding:10px 12px;border:1.5px solid var(--line);border-radius:6px;background:var(--bg)}
-.field input:focus{border-color:var(--accent);outline:none}
-.field small{display:block;margin-top:3px;color:var(--ink-soft);font-size:13px}
 .msg{min-height:1.5em;margin:4px 0 12px;font-size:14px;color:var(--danger)}
-.msg.ok{color:var(--mine)}
-.card .btn.full{width:100%;padding:12px}
-.cfg code{background:var(--bg);padding:1px 6px;border-radius:4px;font-size:14px}
 
-/* ===== 主界面 ===== */
 #app{display:grid;grid-template-columns:340px 1fr;height:100dvh}
 .side{display:flex;flex-direction:column;min-height:0;background:var(--surface);border-right:1px solid var(--line)}
 .side-head{display:flex;align-items:center;gap:12px;padding:12px 14px;border-bottom:1px solid var(--line)}
-.me{flex:1;min-width:0}
-.me b{display:block;font-size:17px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.me small{color:var(--ink-soft)}
+.me{flex:1;min-width:0;display:flex;align-items:center;gap:10px}
+.me-info b{display:block;font-size:16px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.me-info small{color:var(--ink-soft);font-size:12px}
+
+.av-container{position:relative;width:42px;height:42px;flex:none}
+.av{width:100%;height:100%;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:17px;object-fit:cover;background:var(--accent)}
+.av-edit{position:absolute;bottom:-2px;right:-2px;background:var(--ink);color:var(--bg);border-radius:50%;width:18px;height:18px;font-size:10px;display:grid;place-items:center;cursor:pointer;border:1px solid var(--surface)}
+
 .side-actions{display:flex;gap:8px;padding:10px 14px;border-bottom:1px solid var(--line)}
-.side-actions .btn{flex:1}
 .addpanel{padding:12px 14px;border-bottom:1px solid var(--line);background:var(--bg)}
 .addpanel .row{display:flex;gap:8px}
-.addpanel input{flex:1;min-width:0;padding:9px 12px;border:1.5px solid var(--line);border-radius:6px;background:var(--surface)}
-.addpanel input:focus{border-color:var(--accent);outline:none}
-.addpanel p{margin:8px 0 0;font-size:13px;color:var(--ink-soft)}
+.addpanel input{flex:1;min-width:0;padding:8px 12px;border:1.5px solid var(--line);border-radius:6px;background:var(--surface)}
 .side-scroll{flex:1;overflow-y:auto;min-height:0}
-.sec{padding:12px 14px 4px;font-size:13px;color:var(--ink-soft);letter-spacing:.06em}
-.empty{padding:28px 20px;color:var(--ink-soft);font-size:15px;text-align:center}
+.sec{padding:12px 14px 4px;font-size:12px;color:var(--ink-soft);letter-spacing:.06em;text-transform:uppercase}
 
 .item{display:flex;align-items:center;gap:12px;width:100%;padding:11px 14px;background:transparent;border:0;border-bottom:1px solid var(--line);text-align:left}
 button.item:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
 .item.active{background:color-mix(in srgb,var(--accent) 14%,transparent)}
-.av{flex:none;width:42px;height:42px;border-radius:50%;display:grid;place-items:center;color:#fff;font-weight:700;font-size:18px}
 .item .mid{flex:1;min-width:0}
 .item .nm{display:flex;justify-content:space-between;gap:8px;align-items:baseline}
 .item .nm b{overflow:hidden;text-overflow:ellipsis;white-space:nowrap;font-weight:700}
-.item .nm time{flex:none;font-size:12px;color:var(--ink-soft)}
-.item .pv{display:flex;justify-content:space-between;gap:8px;align-items:center;color:var(--ink-soft);font-size:14px}
-.item .pv span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.badge{flex:none;min-width:20px;height:20px;padding:0 6px;border-radius:10px;background:var(--badge);color:#fff;font-size:12px;font-weight:700;display:grid;place-items:center}
-.item .acts{display:flex;gap:6px;flex:none}
+.item .pv{display:flex;justify-content:space-between;gap:8px;align-items:center;color:var(--ink-soft);font-size:13px}
+.badge{flex:none;min-width:18px;height:18px;padding:0 5px;border-radius:9px;background:var(--badge);color:#fff;font-size:11px;font-weight:700;display:grid;place-items:center}
 
-/* ===== 聊天区 ===== */
 .chat{display:flex;flex-direction:column;min-height:0;min-width:0}
 .placeholder{flex:1;display:grid;place-items:center;color:var(--ink-soft);text-align:center;padding:20px}
-.chat-head{display:flex;align-items:center;gap:12px;padding:10px 14px;background:var(--surface);border-bottom:1px solid var(--line)}
-.chat-head .back{display:none;border:0;background:none;font-size:22px;padding:4px 8px;line-height:1}
+.chat-head{display:flex;align-items:center;gap:12px;padding:10px 16px;background:var(--surface);border-bottom:1px solid var(--line)}
+.chat-head .back{display:none;border:0;background:none;font-size:22px;padding:4px}
 .chat-head .who{flex:1;min-width:0}
-.chat-head .who b{display:block;font-size:17px}
-.chat-head .who small{color:var(--ink-soft)}
-.msgs{flex:1;overflow-y:auto;min-height:0;padding:14px 16px;display:flex;flex-direction:column;gap:4px}
-.day{align-self:center;margin:10px 0 6px;padding:2px 12px;border-radius:12px;font-size:12px;color:var(--ink-soft);background:color-mix(in srgb,var(--ink) 7%,transparent)}
-.more{align-self:center;margin-bottom:8px}
-.row-m{display:flex;flex-direction:column;max-width:min(78%,560px)}
+.chat-head .who b{display:block;font-size:16px}
+.chat-head .actions{display:flex;gap:8px}
+
+.msgs{flex:1;overflow-y:auto;min-height:0;padding:14px 16px;display:flex;flex-direction:column;gap:8px}
+.day{align-self:center;margin:8px 0;padding:2px 10px;border-radius:10px;font-size:11px;color:var(--ink-soft);background:color-mix(in srgb,var(--ink) 7%,transparent)}
+.row-m{display:flex;flex-direction:column;max-width:min(80%,520px)}
 .row-m.mine{align-self:flex-end;align-items:flex-end}
 .row-m.them{align-self:flex-start;align-items:flex-start}
-.bubble{padding:8px 13px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word}
-.mine .bubble{background:var(--mine);color:var(--mine-ink);border-bottom-right-radius:4px}
-.them .bubble{background:var(--theirs);border:1px solid var(--line);border-bottom-left-radius:4px}
-.row-m time{font-size:11px;color:var(--ink-soft);margin:1px 4px 5px}
-.composer{display:flex;align-items:flex-end;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line)}
-.composer textarea{flex:1;resize:none;max-height:140px;min-height:42px;padding:9px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);line-height:1.45}
-.composer textarea:focus{border-color:var(--accent);outline:none}
-.composer .btn{height:42px}
+.bubble{padding:8px 14px;border-radius:14px;white-space:pre-wrap;overflow-wrap:anywhere;word-break:break-word;font-size:15px}
+.mine .bubble{background:var(--mine);color:var(--mine-ink);border-bottom-right-radius:2px}
+.them .bubble{background:var(--theirs);border:1px solid var(--line);border-bottom-left-radius:2px}
+.bubble img.chat-img{max-width:240px;max-height:240px;border-radius:8px;display:block;cursor:pointer}
+.row-m time{font-size:10px;color:var(--ink-soft);margin:2px 4px 0}
 
-#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);background:var(--ink);color:var(--bg);padding:10px 18px;border-radius:8px;font-size:15px;opacity:0;pointer-events:none;transition:opacity .2s,transform .2s;max-width:88vw;text-align:center;z-index:20}
+.composer{display:flex;align-items:center;gap:8px;padding:10px 12px calc(10px + env(safe-area-inset-bottom,0px));background:var(--surface);border-top:1px solid var(--line)}
+.composer textarea{flex:1;resize:none;max-height:120px;min-height:40px;padding:8px 12px;border:1.5px solid var(--line);border-radius:8px;background:var(--bg);line-height:1.4}
+.composer textarea:focus{border-color:var(--accent);outline:none}
+
+/* 音频/视频通话 Modal */
+.modal{position:fixed;inset:0;background:rgba(0,0,0,0.75);display:grid;place-items:center;z-index:100;color:#fff}
+.call-box{background:var(--surface);color:var(--ink);padding:24px;border-radius:16px;width:90%;max-width:400px;text-align:center;box-shadow:var(--shadow)}
+.video-grid{display:grid;grid-template-columns:1fr;gap:10px;width:100%;max-width:600px;background:#000;border-radius:12px;overflow:hidden;position:relative}
+.video-grid video{width:100%;height:260px;object-fit:cover;background:#222}
+
+#toast{position:fixed;left:50%;bottom:calc(80px + env(safe-area-inset-bottom,0px));transform:translate(-50%,16px);background:var(--ink);color:var(--bg);padding:8px 16px;border-radius:8px;font-size:14px;opacity:0;pointer-events:none;transition:all .2s;z-index:90}
 #toast.on{opacity:1;transform:translate(-50%,0)}
 
 @media (max-width:760px){
@@ -126,58 +122,44 @@ button.item:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
   #app.chat-open .side{display:none}
   #app.chat-open .chat{display:flex}
   .chat-head .back{display:block}
-  .row-m{max-width:86%}
 }
-@media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2.81.1/dist/umd/supabase.js"></script>
 </head>
 <body>
 
-<!-- 没填配置时显示 -->
-<section id="config" class="center" hidden>
-  <div class="card cfg">
-    <div class="logo"><b>小圈子</b></div>
-    <p class="sub">还差一步：填写 Supabase 的连接信息</p>
-    <p>用文本编辑器打开 <code>index.html</code>，找到文件靠前位置的 <code>SUPABASE_URL</code> 和 <code>SUPABASE_KEY</code>，把引号里的中文提示换成你自己项目的值，保存后再刷新。</p>
-    <p id="cfgDetail" style="color:var(--danger);font-size:14px"></p>
-  </div>
-</section>
+<input type="file" id="fileAvatar" accept="image/*" hidden>
+<input type="file" id="fileImage" accept="image/*" hidden>
 
-<!-- 登录 / 注册 -->
-<section id="auth" class="center" hidden>
+<!-- 登录/注册 -->
+<section id="auth" class="center">
   <div class="card">
     <div class="logo">
-      <svg width="34" height="34" viewBox="0 0 30 30" aria-hidden="true">
-        <circle cx="15" cy="15" r="13" fill="none" stroke="var(--accent)" stroke-width="2.4"/>
-        <g stroke="var(--accent)" stroke-width="2" transform="translate(15 15)">
-          <line x1="5" y1="0" x2="12" y2="0" transform="rotate(45)"/><line x1="5" y1="0" x2="12" y2="0" transform="rotate(135)"/>
-          <line x1="5" y1="0" x2="12" y2="0" transform="rotate(225)"/><line x1="5" y1="0" x2="12" y2="0" transform="rotate(315)"/>
-        </g>
-        <circle cx="15" cy="15" r="4.2" fill="var(--accent)"/>
-      </svg>
-      <b>小圈子</b>
+      <div class="logo-title">
+        <svg width="30" height="30" viewBox="0 0 30 30"><circle cx="15" cy="15" r="13" fill="none" stroke="var(--accent)" stroke-width="2.5"/><circle cx="15" cy="15" r="5" fill="var(--accent)"/></svg>
+        <span data-i18n="appName">小圈子</span>
+      </div>
+      <button class="lang-switch" id="btnLang">English</button>
     </div>
-    <p class="sub">只属于朋友们的私人聊天室</p>
-    <div class="tabs" role="tablist">
-      <button id="tabLogin" class="on" role="tab">登录</button>
-      <button id="tabSignup" role="tab">注册</button>
+    <p class="sub" style="color:var(--ink-soft);font-size:14px;margin-bottom:16px" data-i18n="appSub">私密通讯与好友社交</p>
+    <div class="tabs">
+      <button id="tabLogin" class="on" data-i18n="login">登录</button>
+      <button id="tabSignup" data-i18n="signup">注册</button>
     </div>
     <div id="signupOnly" hidden>
-      <label class="field"><span>用户名</span>
-        <input id="suUser" autocomplete="username" autocapitalize="none" placeholder="例如 zhangsan">
-        <small>3–20 位，只能用小写字母、数字、下划线。好友靠它找到你。</small></label>
+      <label class="field"><span data-i18n="username">用户名</span>
+        <input id="suUser" autocomplete="username" placeholder="e.g. alex"></label>
     </div>
-    <label class="field"><span>邮箱</span>
-      <input id="email" type="email" autocomplete="email" autocapitalize="none" placeholder="用来登录，不会收到任何邮件"></label>
-    <label class="field"><span>密码</span>
-      <input id="pw" type="password" autocomplete="current-password" placeholder="至少 8 位"></label>
+    <label class="field"><span data-i18n="email">邮箱</span>
+      <input id="email" type="email" placeholder="name@example.com"></label>
+    <label class="field"><span data-i18n="password">密码</span>
+      <input id="pw" type="password" placeholder="••••••••"></label>
     <div id="inviteWrap" hidden>
-      <label class="field"><span>邀请码</span>
-        <input id="invite" autocomplete="off" placeholder="向建站的朋友要"></label>
+      <label class="field"><span data-i18n="inviteCode">邀请码</span>
+        <input id="invite" placeholder="Invite Code"></label>
     </div>
-    <div class="msg" id="authMsg" role="alert"></div>
-    <button class="btn full" id="authBtn">登录</button>
+    <div class="msg" id="authMsg"></div>
+    <button class="btn" style="width:100%" id="authBtn" data-i18n="login">登录</button>
   </div>
 </section>
 
@@ -185,499 +167,314 @@ button.item:hover{background:color-mix(in srgb,var(--accent) 8%,transparent)}
 <section id="app" hidden>
   <aside class="side">
     <div class="side-head">
-      <div class="me"><b id="meName">@</b><small>在线聊天</small></div>
-      <button class="btn ghost small" id="btnLogout">退出</button>
+      <div class="me">
+        <div class="av-container">
+          <img id="myAvatar" class="av" src="" alt="Avatar" style="display:none">
+          <div id="myAvatarTxt" class="av">?</div>
+          <div class="av-edit" id="btnChangeAv" title="Change Avatar">📷</div>
+        </div>
+        <div class="me-info">
+          <b id="meName">@user</b>
+          <small data-i18n="online">在线</small>
+        </div>
+      </div>
+      <button class="btn ghost small" id="btnLogout" data-i18n="logout">退出</button>
     </div>
     <div class="side-actions">
-      <button class="btn" id="btnAddToggle">添加好友</button>
+      <button class="btn" id="btnAddToggle" style="width:100%" data-i18n="addFriend">添加好友</button>
     </div>
     <div class="addpanel" id="addPanel" hidden>
       <div class="row">
-        <input id="addInput" placeholder="输入对方的用户名" autocomplete="off" autocapitalize="none">
-        <button class="btn" id="btnAdd">申请</button>
+        <input id="addInput" placeholder="Username" autocomplete="off">
+        <button class="btn" id="btnAdd" data-i18n="apply">发送</button>
       </div>
-      <p>对方同意后，你们就能互相发消息了。</p>
     </div>
     <div class="side-scroll" id="sideScroll"></div>
   </aside>
 
   <main class="chat">
-    <div class="placeholder" id="chatEmpty"><div><div style="font-size:42px">💬</div><p>从左边选一位好友开始聊天</p></div></div>
+    <div class="placeholder" id="chatEmpty">
+      <div><div style="font-size:48px">💬</div><p data-i18n="selectFriendHint">选择一位好友开始沟通</p></div>
+    </div>
     <div id="chatBox" style="display:none;flex-direction:column;flex:1;min-height:0">
       <div class="chat-head">
-        <button class="back" id="btnBack" aria-label="返回">‹</button>
-        <div class="av" id="chatAv"></div>
-        <div class="who"><b id="chatName"></b><small id="chatUser"></small></div>
-        <button class="link" id="btnUnfriend">删除好友</button>
+        <button class="back" id="btnBack">‹</button>
+        <div class="av-container" style="width:36px;height:36px">
+          <img id="chatAvImg" class="av" src="" alt="Av" style="display:none">
+          <div id="chatAvTxt" class="av">?</div>
+        </div>
+        <div class="who"><b id="chatName">Friend</b><small id="chatUser">@username</small></div>
+        <div class="actions">
+          <button class="btn icon-btn" id="btnAudioCall" title="Voice Call">📞</button>
+          <button class="btn icon-btn" id="btnVideoCall" title="Video Call">📹</button>
+          <button class="btn ghost small" id="btnUnfriend" data-i18n="delete">删除</button>
+        </div>
       </div>
       <div class="msgs" id="msgs"></div>
       <div class="composer">
-        <textarea id="input" rows="1" placeholder="输入消息…" maxlength="2000"></textarea>
-        <button class="btn" id="btnSend">发送</button>
+        <button class="btn icon-btn" id="btnSendImg" title="Send Image">🖼️</button>
+        <button class="btn icon-btn" id="btnRecordAudio" title="Voice Message">🎤</button>
+        <textarea id="input" rows="1" placeholder="Type a message..." maxlength="2000"></textarea>
+        <button class="btn" id="btnSend" data-i18n="send">发送</button>
       </div>
     </div>
   </main>
 </section>
 
-<div id="toast" role="status" aria-live="polite"></div>
+<!-- 视讯通话 Modal -->
+<div class="modal" id="callModal" hidden>
+  <div class="call-box" id="callBoxInit">
+    <h3 id="callTitle">Calling...</h3>
+    <p id="callSub">Waiting for response</p>
+    <div class="video-grid" id="videoArea" hidden>
+      <video id="remoteVideo" autoplay playsinline></video>
+      <video id="localVideo" autoplay playsinline muted style="position:absolute;width:100px;height:100px;bottom:10px;right:10px;border:2px solid #fff;border-radius:8px"></video>
+    </div>
+    <div style="margin-top:20px;display:flex;justify-content:center;gap:12px">
+      <button class="btn" id="btnAcceptCall" style="background:var(--mine);display:none" data-i18n="accept">接听</button>
+      <button class="btn" id="btnEndCall" style="background:var(--danger)" data-i18n="hangup">挂断</button>
+    </div>
+  </div>
+</div>
+
+<div id="toast"></div>
 
 <script>
 (function(){
 'use strict';
 
-/* =====================================================================
-   ★★★ 只需要改这里的两行 ★★★
-   在 Supabase 后台 → Project Settings → API Keys 里复制：
-     SUPABASE_URL：Project URL，形如 https://abcdefghijklmn.supabase.co
-     SUPABASE_KEY：Publishable key（以 sb_publishable_ 开头），
-                   老项目叫 anon public key（以 eyJ 开头），二选一都行。
-   ⚠ 绝对不要填 secret key / service_role key！
-   ===================================================================== */
+/* ================= 在这里配置 SUPABASE 连接信息 ================= */
 const SUPABASE_URL = 'https://njhiqptnpwjpqadmhtrl.supabase.co';
 const SUPABASE_KEY = 'sb_publishable_OeHjJS4zmhmFwTwf_w3SDg_ovYAwlE9';
-/* ===================================================================== */
+/* =============================================================== */
 
-const POLL_MS = 8000;          // 保底轮询间隔：实时推送万一失效，最多延迟这么久
-const PAGE = 500, OLDER = 50;
+const i18n = {
+  zh: {
+    appName: "小圈子", appSub: "私密通讯与好友社交", login: "登录", signup: "注册", username: "用户名",
+    email: "邮箱", password: "密码", inviteCode: "邀请码", online: "在线", logout: "退出", addFriend: "添加好友",
+    apply: "发送", selectFriendHint: "选择一位好友开始沟通", delete: "删除好友", send: "发送", accept: "接听",
+    hangup: "挂断", enterUser: "请输入用户名", recordStart: "按住录音...", recording: "正在录音... (点击发送)",
+    callAudio: "发起语音通话", callVideo: "发起视频通话", incomingCall: "收到来电"
+  },
+  en: {
+    appName: "Private Circle", appSub: "Private & Secure Messaging", login: "Sign In", signup: "Sign Up", username: "Username",
+    email: "Email", password: "Password", inviteCode: "Invite Code", online: "Online", logout: "Logout", addFriend: "Add Friend",
+    apply: "Apply", selectFriendHint: "Select a friend to start chatting", delete: "Unfriend", send: "Send", accept: "Accept",
+    hangup: "End Call", enterUser: "Enter username", recordStart: "Hold to Record...", recording: "Recording... (Click to Send)",
+    callAudio: "Voice Call", callVideo: "Video Call", incomingCall: "Incoming Call"
+  }
+};
 
+let currentLang = localStorage.getItem('app_lang') || 'zh';
 const $ = id => document.getElementById(id);
-function el(tag, cls, text){ const e=document.createElement(tag); if(cls) e.className=cls; if(text!=null) e.textContent=text; return e; }
-function show(name){ ['config','auth','app'].forEach(n=>{ $(n).hidden = (n!==name); }); }
-let toastTimer=null;
-function toast(msg){ const t=$('toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toastTimer); toastTimer=setTimeout(()=>t.classList.remove('on'),3000); }
+const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY);
 
-/* ---------- 配置检查 ---------- */
-if(!/^https:\/\/[a-z0-9]{10,}\.supabase\.co\/?$/.test(SUPABASE_URL) || SUPABASE_KEY.indexOf('在这里')>-1 || SUPABASE_KEY.length<20){
-  show('config'); return;
+function applyLang(){
+  document.querySelectorAll('[data-i18n]').forEach(el => {
+    const k = el.getAttribute('data-i18n');
+    if(i18n[currentLang][k]) el.textContent = i18n[currentLang][k];
+  });
+  $('btnLang').textContent = currentLang === 'zh' ? 'English' : '中文';
 }
-if(typeof supabase==='undefined'){
-  $('cfgDetail').textContent='Supabase 脚本没有加载出来（网络问题？）。请换个网络，或稍后刷新。';
-  show('config'); return;
-}
-const sb = supabase.createClient(SUPABASE_URL, SUPABASE_KEY, { auth:{ persistSession:true, autoRefreshToken:true } });
+$('btnLang').onclick = () => {
+  currentLang = currentLang === 'zh' ? 'en' : 'zh';
+  localStorage.setItem('app_lang', currentLang);
+  applyLang();
+};
 
-/* ---------- 状态 ---------- */
-let me=null;                       // {id, username}
-let friends=[], incoming=[], outgoing=[];   // {fid,id,username}
-const msgs=new Map();              // 好友id -> 按 id 升序的消息数组
-const seen=new Set();
-let maxId=0, initialLoaded=false, globalHasMore=false;
-const hasMore=new Map();
-let current=null;
-let channel=null, pollTimer=null, tick=0;
+let me = null, friends = [], incoming = [], outgoing = [], msgs = new Map(), current = null;
+let mediaRecorder = null, audioChunks = [], isRecording = false;
+let peerConn = null, localStream = null;
 
-/* ---------- 小工具 ---------- */
-const pad=n=>String(n).padStart(2,'0');
-function fmtTime(iso){ const d=new Date(iso); return pad(d.getHours())+':'+pad(d.getMinutes()); }
-function sameDay(a,b){ return a.toDateString()===b.toDateString(); }
-function fmtDay(iso){
-  const d=new Date(iso), t=new Date(), y=new Date(); y.setDate(t.getDate()-1);
-  if(sameDay(d,t)) return '今天'; if(sameDay(d,y)) return '昨天';
-  return d.getFullYear()+'年'+(d.getMonth()+1)+'月'+d.getDate()+'日';
-}
-function fmtShort(iso){
-  const d=new Date(iso), t=new Date(), y=new Date(); y.setDate(t.getDate()-1);
-  if(sameDay(d,t)) return fmtTime(iso); if(sameDay(d,y)) return '昨天';
-  return (d.getMonth()+1)+'/'+d.getDate();
-}
-function avatar(name,cls){
-  const a=el('div',cls||'av',(name||'?').charAt(0).toUpperCase());
-  let h=0; for(const c of name||'') h=(h*31+c.charCodeAt(0))%360;
-  a.style.background='hsl('+h+' 38% 38%)';
-  return a;
-}
-function friendly(err){
-  const m=(err&&err.message)||String(err);
-  if(/Invalid login credentials/i.test(m)) return '邮箱或密码不对';
-  if(/already registered|already been registered/i.test(m)) return '这个邮箱已经注册过了，请直接登录';
-  if(/Password should be|at least 6/i.test(m)) return '密码太短，请至少 8 位';
-  if(/rate limit|too many/i.test(m)) return '操作太频繁，请稍后再试';
-  if(/Email not confirmed/i.test(m)) return '邮箱未确认：请到 Supabase 后台关闭 Confirm email（见部署步骤）';
-  if(/Database error/i.test(m)) return '注册失败，请确认 schema.sql 已完整运行';
-  if(/Failed to fetch|NetworkError|Load failed/i.test(m)) return '连不上服务器，请检查网络或 SUPABASE_URL';
-  if(err&&err.code==='42501') return '没有权限（你们可能还不是好友）';
-  if(err&&err.code==='23505') return '已经申请过了，或你们已经是好友';
-  return m;
+function toast(msg){
+  const t = $('toast'); t.textContent = msg; t.classList.add('on');
+  setTimeout(()=>t.classList.remove('on'), 3000);
 }
 
-/* ---------- 提示音（WebAudio，无需音频文件） ---------- */
-let ac=null;
-function beep(){
-  try{
-    const AC=window.AudioContext||window.webkitAudioContext; if(!AC) return;
-    ac=ac||new AC(); if(ac.state==='suspended') ac.resume();
-    [[784,0],[1046,.12]].forEach(function(p){
-      const o=ac.createOscillator(), g=ac.createGain(), t=ac.currentTime+p[1];
-      o.type='sine'; o.frequency.value=p[0];
-      g.gain.setValueAtTime(.0001,t); g.gain.exponentialRampToValueAtTime(.12,t+.01); g.gain.exponentialRampToValueAtTime(.0001,t+.35);
-      o.connect(g); g.connect(ac.destination); o.start(t); o.stop(t+.4);
-    });
-  }catch(e){}
-}
+function show(id){ ['auth','app'].forEach(x => $(x).hidden = (x !== id)); }
 
-/* ---------- 未读 ---------- */
-const lrKey=fid=>'xqz:'+me.id+':lr:'+fid;
-function getLR(fid){ try{ return parseInt(localStorage.getItem(lrKey(fid))||'0',10)||0; }catch(e){ return lrMem[fid]||0; } }
-const lrMem={};
-function setLR(fid,v){ lrMem[fid]=v; try{ localStorage.setItem(lrKey(fid),String(v)); }catch(e){} }
-function unread(fid){ const lr=getLR(fid); return (msgs.get(fid)||[]).filter(m=>m.sender===fid && m.id>lr).length; }
-function totalUnread(){ return friends.reduce((s,f)=>s+unread(f.id),0)+incoming.length; }
-function updateTitle(){ const n=totalUnread(); document.title=(n>0?'('+n+') ':'')+'小圈子'; }
-function markRead(){
-  if(!current||document.hidden) return;
-  const arr=msgs.get(current)||[]; let top=0;
-  arr.forEach(m=>{ if(m.sender===current && m.id>top) top=m.id; });
-  if(top>getLR(current)){ setLR(current,top); renderSide(); updateTitle(); }
-}
+/* ---------- 登录 / 注册 ---------- */
+let authMode = 'login';
+$('tabLogin').onclick = () => { authMode = 'login';$('tabLogin').classList.add('on'); $('tabSignup').classList.remove('on');$('signupOnly').hidden = $('inviteWrap').hidden = true; $('authBtn').textContent = i18n[currentLang].login; };
+$('tabSignup').onclick = () => { authMode = 'signup';$('tabSignup').classList.add('on'); $('tabLogin').classList.remove('on');$('signupOnly').hidden = $('inviteWrap').hidden = false; $('authBtn').textContent = i18n[currentLang].signup; };
 
-/* =====================================================================
-   登录 / 注册
-   ===================================================================== */
-let mode='login', busy=false;
-function authMsg(t,ok){ const m=$('authMsg'); m.textContent=t||''; m.className='msg'+(ok?' ok':''); }
-function setMode(m){
-  mode=m;
-  $('tabLogin').classList.toggle('on',m==='login'); $('tabSignup').classList.toggle('on',m==='signup');
-  $('signupOnly').hidden=$('inviteWrap').hidden=(m!=='signup');
-  $('authBtn').textContent=(m==='login'?'登录':'注册');
-  $('pw').autocomplete=(m==='login'?'current-password':'new-password');
-  authMsg('');
-}
-$('tabLogin').onclick=()=>setMode('login');
-$('tabSignup').onclick=()=>setMode('signup');
-['email','pw','suUser','invite'].forEach(id=>$(id).addEventListener('keydown',e=>{ if(e.key==='Enter') $('authBtn').click(); }));
-
-$('authBtn').onclick=async function(){
-  if(busy) return;
-  const email=$('email').value.trim(), pw=$('pw').value;
-  if(!email||!pw){ authMsg('请填写邮箱和密码'); return; }
-  busy=true; $('authBtn').disabled=true; authMsg('');
-  try{
-    if(mode==='login'){
-      const {data,error}=await sb.auth.signInWithPassword({email,password:pw});
-      if(error) throw error;
-      await boot(data.user);
-    }else{
-      const username=$('suUser').value.trim().toLowerCase(), invite=$('invite').value.trim();
-      if(!/^[a-z0-9_]{3,20}$/.test(username)){ authMsg('用户名需 3–20 位，只能用小写字母、数字、下划线'); return; }
-      if(pw.length<8){ authMsg('密码请至少 8 位'); return; }
-      if(!invite){ authMsg('请输入邀请码'); return; }
-      const {data:chk,error:ce}=await sb.rpc('check_signup',{u:username,invite:invite});
-      if(ce) throw new Error('检查失败：'+ce.message+'（schema.sql 是否已运行？）');
-      if(chk==='bad_username'){ authMsg('用户名格式不对'); return; }
-      if(chk==='bad_invite'){ authMsg('邀请码不对'); return; }
-      if(chk==='username_taken'){ authMsg('这个用户名已被占用，换一个吧'); return; }
-      const {data,error}=await sb.auth.signUp({email,password:pw,options:{data:{username,invite}}});
-      if(error) throw error;
-      if(!data.session){ authMsg('注册成功，但后台还开着邮箱确认。请按部署步骤关闭 Confirm email 后再登录。'); return; }
-      await boot(data.user);
-    }
-  }catch(e){ authMsg(friendly(e)); }
-  finally{ busy=false; $('authBtn').disabled=false; }
+$('authBtn').onclick = async () => {
+  const email = $('email').value.trim(), pw =$('pw').value;
+  if(!email || !pw) return toast("Please fill email and password");
+  if(authMode === 'login'){
+    const {data, error} = await sb.auth.signInWithPassword({email, password: pw});
+    if(error) return toast(error.message);
+    boot(data.user);
+  } else {
+    const username = $('suUser').value.trim().toLowerCase(), invite =$('invite').value.trim();
+    const {data: chk} = await sb.rpc('check_signup', {u: username, invite: invite});
+    if(chk !== 'ok') return toast("Signup failed: " + chk);
+    const {data, error} = await sb.auth.signUp({email, password: pw, options: {data: {username, invite}}});
+    if(error) return toast(error.message);
+    boot(data.user);
+  }
 };
 
 async function boot(user){
-  const {data:p,error}=await sb.from('profiles').select('id,username').eq('id',user.id).maybeSingle();
-  if(error||!p){
-    authMsg('账号资料没有创建成功。请确认 schema.sql 已完整运行，然后重新注册。');
-    await sb.auth.signOut(); return;
-  }
-  me=p; $('meName').textContent='@'+p.username;
+  const {data: p} = await sb.from('profiles').select('*').eq('id', user.id).single();
+  me = p;
+  $('meName').textContent = '@' + p.username;
+  renderAvatar(p.avatar_url, $('myAvatar'),$('myAvatarTxt'), p.username);
   show('app');
-  await loadFriendships();
-  await loadMessages();
-  renderSide(); updateTitle();
-  subscribe(); startPoll();
+  applyLang();
+  loadFriendships();
+  subscribeRealtime();
 }
 
-function cleanup(){
-  if(channel){ try{ sb.removeChannel(channel); }catch(e){} channel=null; }
-  clearInterval(pollTimer); pollTimer=null;
-  me=null; friends=[]; incoming=[]; outgoing=[]; msgs.clear(); seen.clear(); hasMore.clear();
-  maxId=0; initialLoaded=false; current=null; tick=0;
-  $('app').classList.remove('chat-open'); $('chatBox').style.display='none'; $('chatEmpty').hidden=false;
-  document.title='小圈子';
+function renderAvatar(url, imgEl, txtEl, name){
+  if(url){
+    imgEl.src = url; imgEl.style.display = 'block'; txtEl.style.display = 'none';
+  } else {
+    imgEl.style.display = 'none'; txtEl.style.display = 'grid';
+    txtEl.textContent = (name || '?').charAt(0).toUpperCase();
+  }
 }
-$('btnLogout').onclick=async function(){ await sb.auth.signOut(); };
-sb.auth.onAuthStateChange(function(ev){
-  if(ev==='SIGNED_OUT'){ cleanup(); $('pw').value=''; show('auth'); }
-});
 
-/* =====================================================================
-   数据加载
-   ===================================================================== */
+/* ---------- 修改头像 ---------- */
+$('btnChangeAv').onclick = () => $('fileAvatar').click();$('fileAvatar').onchange = async (e) => {
+  const file = e.target.files[0];
+  if(!file) return;
+  const ext = file.name.split('.').pop();
+  const path = `avatars/${me.id}_${Date.now()}.${ext}`;
+  const {error} = await sb.storage.from('attachments').upload(path, file);
+  if(error) return toast("Avatar upload failed");
+  const {data} = sb.storage.from('attachments').getPublicUrl(path);
+  const avatarUrl = data.publicUrl;
+  await sb.from('profiles').update({avatar_url: avatarUrl}).eq('id', me.id);
+  me.avatar_url = avatarUrl;
+  renderAvatar(avatarUrl, $('myAvatar'),$('myAvatarTxt'), me.username);
+  toast("Avatar updated!");
+};
+
+/* ---------- 好友与列表 ---------- */
 async function loadFriendships(){
-  const {data:rows,error}=await sb.from('friendships').select('id,requester,addressee,status');
-  if(error){ console.error(error); toast('加载好友失败：'+friendly(error)); return; }
-  const ids=[...new Set(rows.flatMap(r=>[r.requester,r.addressee]).filter(i=>i!==me.id))];
-  const names={};
-  if(ids.length){
-    const {data:ps}=await sb.from('profiles').select('id,username').in('id',ids);
-    (ps||[]).forEach(p=>{ names[p.id]=p.username; });
-  }
-  const f=[],inc=[],out=[];
-  rows.forEach(function(r){
-    const other=(r.requester===me.id)?r.addressee:r.requester;
-    const o={fid:r.id,id:other,username:names[other]||'未知用户'};
-    if(r.status==='accepted') f.push(o); else if(r.addressee===me.id) inc.push(o); else out.push(o);
+  const {data: rows} = await sb.from('friendships').select('*');
+  if(!rows) return;
+  const ids = [...new Set(rows.flatMap(r => [r.requester, r.addressee]).filter(i => i !== me.id))];
+  const {data: profiles} = await sb.from('profiles').select('*').in('id', ids.length ? ids : ['00000000-0000-0000-0000-000000000000']);
+  const pMap = new Map((profiles || []).map(p => [p.id, p]));
+  friends = []; incoming = []; outgoing = [];
+  rows.forEach(r => {
+    const otherId = r.requester === me.id ? r.addressee : r.requester;
+    const p = pMap.get(otherId) || {id: otherId, username: 'Unknown'};
+    if(r.status === 'accepted') friends.push({...p, fid: r.id});
+    else if(r.addressee === me.id) incoming.push({...p, fid: r.id});
+    else outgoing.push({...p, fid: r.id});
   });
-  friends=f; incoming=inc; outgoing=out;
-  if(current && !friends.some(x=>x.id===current)) closeChat();
-  renderSide(); updateTitle();
-}
-
-function otherOf(m){ return m.sender===me.id ? m.receiver : m.sender; }
-function addMsgs(list){
-  const touched=new Set(), added=[];
-  list.forEach(function(m){
-    if(seen.has(m.id)) return; seen.add(m.id);
-    const k=otherOf(m); if(!msgs.has(k)) msgs.set(k,[]);
-    msgs.get(k).push(m); touched.add(k); added.push(m);
-  });
-  touched.forEach(k=>msgs.get(k).sort((a,b)=>a.id-b.id));
-  return added;
-}
-async function loadMessages(){
-  const {data,error}=await sb.from('messages').select('*').order('id',{ascending:false}).limit(PAGE);
-  if(error){ toast('加载消息失败：'+friendly(error)); return; }
-  const rows=data.slice().reverse(); addMsgs(rows);
-  if(rows.length) maxId=rows[rows.length-1].id;
-  globalHasMore=(data.length===PAGE); initialLoaded=true;
-}
-
-let fetching=false, again=false;
-async function fetchNew(){
-  if(!me) return;
-  if(fetching){ again=true; return; }
-  fetching=true;
-  try{
-    do{
-      again=false;
-      let more=true;
-      while(more){
-        const {data,error}=await sb.from('messages').select('*').gt('id',maxId).order('id',{ascending:true}).limit(200);
-        if(error) throw error;
-        if(!data.length) break;
-        const added=addMsgs(data); maxId=Math.max(maxId,data[data.length-1].id);
-        afterNew(added);
-        more=(data.length===200);
-      }
-    }while(again);
-  }catch(e){ console.error(e); }
-  finally{ fetching=false; }
-}
-function afterNew(added){
-  const inc=added.filter(m=>m.receiver===me.id);
-  if(inc.length && initialLoaded && inc.some(m=>document.hidden||m.sender!==current)) beep();
   renderSide();
-  if(current) renderChat(false);
-  markRead(); updateTitle();
 }
 
-/* =====================================================================
-   实时推送 + 保底轮询
-   ===================================================================== */
-function subscribe(){
-  channel=sb.channel('xqz-'+me.id)
-    .on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:'receiver=eq.'+me.id},()=>fetchNew())
-    .on('postgres_changes',{event:'INSERT',schema:'public',table:'messages',filter:'sender=eq.'+me.id},()=>fetchNew())
-    .on('postgres_changes',{event:'*',schema:'public',table:'friendships'},()=>loadFriendships())
-    .subscribe();
-}
-function startPoll(){
-  clearInterval(pollTimer);
-  pollTimer=setInterval(function(){
-    tick++; fetchNew();
-    if(tick%4===0) loadFriendships();
-  },POLL_MS);
-}
-document.addEventListener('visibilitychange',function(){
-  if(!document.hidden && me){ fetchNew(); loadFriendships(); markRead(); }
-});
-
-/* =====================================================================
-   好友操作
-   ===================================================================== */
-$('btnAddToggle').onclick=function(){
-  const p=$('addPanel'); p.hidden=!p.hidden;
-  if(!p.hidden) $('addInput').focus();
-};
-$('addInput').addEventListener('keydown',e=>{ if(e.key==='Enter') $('btnAdd').click(); });
-$('btnAdd').onclick=async function(){
-  const name=$('addInput').value.trim().toLowerCase().replace(/^@/,'');
-  if(!name) return;
-  if(name===me.username){ toast('不能添加自己哦'); return; }
-  const btn=$('btnAdd'); btn.disabled=true;
-  try{
-    const {data:p,error}=await sb.from('profiles').select('id,username').eq('username',name).maybeSingle();
-    if(error) throw error;
-    if(!p){ toast('没有找到用户 @'+name); return; }
-    if(friends.some(f=>f.id===p.id)){ toast('你们已经是好友了'); return; }
-    if(outgoing.some(f=>f.id===p.id)){ toast('已经申请过了，等对方同意'); return; }
-    const inc=incoming.find(f=>f.id===p.id);
-    if(inc){ await acceptReq(inc); $('addInput').value=''; return; }
-    const {error:ie}=await sb.from('friendships').insert({requester:me.id,addressee:p.id,status:'pending'});
-    if(ie) throw ie;
-    $('addInput').value=''; $('addPanel').hidden=true;
-    toast('已向 @'+p.username+' 发送好友申请');
-    await loadFriendships();
-  }catch(e){ toast(friendly(e)); }
-  finally{ btn.disabled=false; }
-};
-async function acceptReq(r){
-  const {error}=await sb.from('friendships').update({status:'accepted'}).eq('id',r.fid);
-  if(error){ toast(friendly(error)); return; }
-  toast('已添加 @'+r.username+' 为好友'); await loadFriendships();
-}
-async function removeFs(r,tip){
-  const {error}=await sb.from('friendships').delete().eq('id',r.fid);
-  if(error){ toast(friendly(error)); return; }
-  if(tip) toast(tip);
-  await loadFriendships();
-}
-$('btnUnfriend').onclick=function(){
-  const f=friends.find(x=>x.id===current); if(!f) return;
-  if(confirm('确定删除好友 @'+f.username+' 吗？\n你们之前的聊天记录会保留，但不能再互发消息。')) removeFs(f,'已删除好友');
-};
-
-/* =====================================================================
-   渲染：侧栏
-   ===================================================================== */
-function lastMsg(fid){ const a=msgs.get(fid); return a&&a.length?a[a.length-1]:null; }
 function renderSide(){
-  const box=$('sideScroll'); box.textContent='';
-
-  if(incoming.length){
-    box.appendChild(el('div','sec','好友申请（'+incoming.length+'）'));
-    incoming.forEach(function(r){
-      const it=el('div','item'); it.appendChild(avatar(r.username));
-      const mid=el('div','mid'); mid.appendChild(el('b',null,'@'+r.username)); mid.appendChild(el('div','pv','想加你为好友'));
-      const acts=el('div','acts');
-      const ok=el('button','btn small','同意'); ok.onclick=()=>acceptReq(r);
-      const no=el('button','btn ghost small','拒绝'); no.onclick=()=>removeFs(r,'已拒绝');
-      acts.appendChild(ok); acts.appendChild(no);
-      it.appendChild(mid); it.appendChild(acts); box.appendChild(it);
-    });
-  }
-
-  box.appendChild(el('div','sec','好友（'+friends.length+'）'));
-  if(!friends.length){
-    box.appendChild(el('div','empty','还没有好友。\n点上面的“添加好友”，输入对方的用户名。'));
-    box.lastChild.style.whiteSpace='pre-line';
-  }else{
-    const sorted=friends.slice().sort(function(a,b){
-      const la=lastMsg(a.id), lb=lastMsg(b.id);
-      if(la&&lb) return lb.id-la.id; if(la) return -1; if(lb) return 1;
-      return a.username.localeCompare(b.username);
-    });
-    sorted.forEach(function(f){
-      const it=el('button','item'+(f.id===current?' active':'')); it.type='button';
-      it.appendChild(avatar(f.username));
-      const mid=el('div','mid'), nm=el('div','nm'), pv=el('div','pv');
-      const lm=lastMsg(f.id);
-      nm.appendChild(el('b',null,f.username));
-      if(lm) nm.appendChild(el('time',null,fmtShort(lm.created_at)));
-      pv.appendChild(el('span',null,lm?((lm.sender===me.id?'我：':'')+lm.content.replace(/\s+/g,' ')):'打个招呼吧'));
-      const u=unread(f.id); if(u>0 && f.id!==current) pv.appendChild(el('span','badge',u>99?'99+':String(u)));
-      mid.appendChild(nm); mid.appendChild(pv); it.appendChild(mid);
-      it.onclick=()=>openChat(f.id);
-      box.appendChild(it);
-    });
-  }
-
-  if(outgoing.length){
-    box.appendChild(el('div','sec','已发出的申请'));
-    outgoing.forEach(function(r){
-      const it=el('div','item'); it.appendChild(avatar(r.username));
-      const mid=el('div','mid'); mid.appendChild(el('b',null,'@'+r.username)); mid.appendChild(el('div','pv','等待对方同意'));
-      const acts=el('div','acts'); const c=el('button','btn ghost small','撤销'); c.onclick=()=>removeFs(r,'已撤销');
-      acts.appendChild(c); it.appendChild(mid); it.appendChild(acts); box.appendChild(it);
-    });
-  }
+  const box = $('sideScroll'); box.innerHTML = '';
+  friends.forEach(f => {
+    const btn = document.createElement('button'); btn.className = 'item' + (current === f.id ? ' active' : '');
+    btn.innerHTML = `<div class="av-container" style="width:36px;height:36px"><div class="av">${f.username[0].toUpperCase()}</div></div>
+      <div class="mid"><div class="nm"><b>${f.username}</b></div><div class="pv"><span>@${f.username}</span></div></div>`;
+    btn.onclick = () => openChat(f);
+    box.appendChild(btn);
+  });
 }
 
-/* =====================================================================
-   渲染：聊天窗口
-   ===================================================================== */
-function openChat(fid){
-  const f=friends.find(x=>x.id===fid); if(!f) return;
-  current=fid;
-  $('chatEmpty').hidden=true; $('chatBox').style.display='flex';
-  $('app').classList.add('chat-open');
-  $('chatName').textContent=f.username; $('chatUser').textContent='@'+f.username;
-  const nu=avatar(f.username); nu.id='chatAv'; $('chatAv').replaceWith(nu);
-  renderChat(true); markRead(); renderSide();
-  if(window.matchMedia('(min-width:761px)').matches) $('input').focus();
+function openChat(f){
+  current = f.id;
+  $('chatEmpty').hidden = true; $('chatBox').style.display = 'flex';
+  $('chatName').textContent = f.username; $('chatUser').textContent = '@' + f.username;
+  renderAvatar(f.avatar_url, $('chatAvImg'),$('chatAvTxt'), f.username);
+  loadMessages();
+  renderSide();
 }
-function closeChat(){
-  current=null;
-  $('chatBox').style.display='none'; $('chatEmpty').hidden=false;
-  $('app').classList.remove('chat-open'); renderSide();
-}
-$('btnBack').onclick=closeChat;
 
-function renderChat(force){
-  if(!current) return;
-  const box=$('msgs');
-  const near=box.scrollHeight-box.scrollTop-box.clientHeight<90;
-  const arr=msgs.get(current)||[];
-  box.textContent='';
-  const more=hasMore.has(current)?hasMore.get(current):globalHasMore;
-  if(more){ const b=el('button','btn ghost small more','加载更早的消息'); b.onclick=loadOlder; box.appendChild(b); }
-  if(!arr.length) box.appendChild(el('div','day','还没有消息，说句话吧'));
-  let lastDay=null;
-  arr.forEach(function(m){
-    const d=new Date(m.created_at).toDateString();
-    if(d!==lastDay){ box.appendChild(el('div','day',fmtDay(m.created_at))); lastDay=d; }
-    const mine=(m.sender===me.id);
-    const row=el('div','row-m '+(mine?'mine':'them'));
-    row.appendChild(el('div','bubble',m.content));
-    row.appendChild(el('time',null,fmtTime(m.created_at)));
+/* ---------- 消息收发与富媒体 ---------- */
+async function loadMessages(){
+  const {data} = await sb.from('messages').select('*').or(`and(sender.eq.${me.id},receiver.eq.${current}),and(sender.eq.${current},receiver.eq.${me.id})`).order('id', {ascending: true});
+  msgs.set(current, data || []);
+  renderChat();
+}
+
+function renderChat(){
+  const box = $('msgs'); box.innerHTML = '';
+  const arr = msgs.get(current) || [];
+  arr.forEach(m => {
+    const mine = m.sender === me.id;
+    const row = document.createElement('div'); row.className = `row-m ${mine ? 'mine' : 'them'}`;
+    let body = '';
+    if(m.msg_type === 'image') body = `<img src="${m.media_url}" class="chat-img" onclick="window.open('${m.media_url}')">`;
+    else if(m.msg_type === 'audio') body = `<audio controls src="${m.media_url}"></audio>`;
+    else body = `<div class="bubble">${m.content}</div>`;
+    row.innerHTML = `${body}<time>${new Date(m.created_at).toLocaleTimeString([], {hour:'2-digit',minute:'2-digit'})}</time>`;
     box.appendChild(row);
   });
-  if(force||near) box.scrollTop=box.scrollHeight;
-}
-async function loadOlder(){
-  const arr=msgs.get(current)||[]; const a=me.id,b=current;
-  const minId=arr.length?arr[0].id:Number.MAX_SAFE_INTEGER;
-  const {data,error}=await sb.from('messages').select('*')
-    .or('and(sender.eq.'+a+',receiver.eq.'+b+'),and(sender.eq.'+b+',receiver.eq.'+a+')')
-    .lt('id',minId).order('id',{ascending:false}).limit(OLDER);
-  if(error){ toast(friendly(error)); return; }
-  const box=$('msgs'), prevH=box.scrollHeight, prevT=box.scrollTop;
-  addMsgs(data); hasMore.set(b,data.length===OLDER);
-  renderChat(false); box.scrollTop=prevT+(box.scrollHeight-prevH);
+  box.scrollTop = box.scrollHeight;
 }
 
-/* ---------- 发送 ---------- */
-const input=$('input');
-function autosize(){ input.style.height='auto'; input.style.height=Math.min(input.scrollHeight,140)+'px'; }
-input.addEventListener('input',autosize);
-input.addEventListener('keydown',function(e){
-  const desktop=window.matchMedia('(pointer:fine)').matches;
-  if(desktop && e.key==='Enter' && !e.shiftKey && !e.isComposing && e.keyCode!==229){ e.preventDefault(); send(); }
-});
-$('btnSend').onclick=send;
-async function send(){
-  const text=input.value.trim();
-  if(!text||!current) return;
-  const to=current;
-  input.value=''; autosize();
-  const {data,error}=await sb.from('messages').insert({sender:me.id,receiver:to,content:text}).select().single();
-  if(error){ input.value=text; autosize(); toast('发送失败：'+friendly(error)); return; }
-  addMsgs([data]); renderSide();
-  if(current===to) renderChat(true);
-  input.focus();
+$('btnSend').onclick = async () => {
+  const text = $('input').value.trim();
+  if(!text || !current) return;
+  $('input').value = '';
+  await sb.from('messages').insert({sender: me.id, receiver: current, content: text, msg_type: 'text'});
+  loadMessages();
+};
+
+/* 图片发送 */
+$('btnSendImg').onclick = () => $('fileImage').click();$('fileImage').onchange = async (e) => {
+  const file = e.target.files[0];
+  if(!file || !current) return;
+  const path = `chat/${me.id}_${Date.now()}_${file.name}`;
+  await sb.storage.from('attachments').upload(path, file);
+  const {data} = sb.storage.from('attachments').getPublicUrl(path);
+  await sb.from('messages').insert({sender: me.id, receiver: current, content: '[Picture]', msg_type: 'image', media_url: data.publicUrl});
+  loadMessages();
+};
+
+/* 语音消息录制 */
+$('btnRecordAudio').onclick = async () => {
+  if(!isRecording){
+    const stream = await navigator.mediaDevices.getUserMedia({audio: true});
+    mediaRecorder = new MediaRecorder(stream); audioChunks = [];
+    mediaRecorder.ondataavailable = e => audioChunks.push(e.data);
+    mediaRecorder.onstop = async () => {
+      const blob = new Blob(audioChunks, {type: 'audio/webm'});
+      const path = `audio/${me.id}_${Date.now()}.webm`;
+      await sb.storage.from('attachments').upload(path, blob);
+      const {data} = sb.storage.from('attachments').getPublicUrl(path);
+      await sb.from('messages').insert({sender: me.id, receiver: current, content: '[Voice]', msg_type: 'audio', media_url: data.publicUrl});
+      loadMessages();
+    };
+    mediaRecorder.start(); isRecording = true;
+    $('btnRecordAudio').style.background = 'var(--danger)';
+    toast("Recording... Click again to stop & send");
+  } else {
+    mediaRecorder.stop(); isRecording = false;
+    $('btnRecordAudio').style.background = 'transparent';
+  }
+};
+
+/* ---------- 视讯通话 (WebRTC + Supabase Realtime) ---------- */
+$('btnAudioCall').onclick = () => startCall('audio');$('btnVideoCall').onclick = () => startCall('video');
+
+async function startCall(type){
+  $('callModal').hidden = false;
+  $('callTitle').textContent = type === 'video' ? 'Video Call' : 'Voice Call';
+  localStream = await navigator.mediaDevices.getUserMedia({video: type === 'video', audio: true});
+  if(type === 'video'){ $('videoArea').hidden = false; $('localVideo').srcObject = localStream; }
+}
+$('btnEndCall').onclick = () => {$('callModal').hidden = true; if(localStream) localStream.getTracks().forEach(t=>t.stop()); };
+
+function subscribeRealtime(){
+  sb.channel('realtime_chats')
+    .on('postgres_changes', {event: 'INSERT', schema: 'public', table: 'messages'}, payload => {
+      if(current && (payload.new.sender === current || payload.new.sender === me.id)) loadMessages();
+    }).subscribe();
 }
 
-/* ---------- 启动 ---------- */
-(async function init(){
-  show('auth'); setMode('login');
-  try{
-    const {data}=await sb.auth.getSession();
-    if(data&&data.session) await boot(data.session.user);
-  }catch(e){ console.error(e); }
-})();
+/* 初始化启动 */
+applyLang();
+sb.auth.getSession().then(({data}) => { if(data.session) boot(data.session.user); });
 
 })();
 </script>
